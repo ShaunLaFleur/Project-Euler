@@ -23,7 +23,7 @@ console.log("The sum of only the even numbers within this sequence is: "+ sumOfE
 
 
 /* 
-// Simplified version
+// Simplified non-customisable version
 
 var fibHolder = [1,2];
 var sumOfEven = 0;
