@@ -5,6 +5,7 @@ value that is diagonal to it(down-right) we compare it to it's own position plus
 So to add the value on grid position 1 row 1 to position 2 row 2, we could do(not proper syntax):
 i = 0;
 array[i] + array[i+21];
+NOTE THIS IS ONLY USING A 1 DIMENSIONAL ARRAY
 */
 
 var a =	[8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8,
@@ -27,11 +28,33 @@ var a =	[8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8,
 	20,69,36,41,72,30,23,88,34,62,99,69,82,67,59,85,74,4,36,16,
 	20,73,35,29,78,31,90,1,74,31,49,71,48,86,81,16,23,57,5,54,
 	01,70,54,71,83,51,54,69,16,92,33,48,61,43,52,1,89,19,67,48];
+
+var isRightOff = false;
+var highestProduct = 0;
+var highestNumbers = [];
 	
 // Push the positions that are off limits to an array instead of having to write all 60 values by hand.
+// Right and Left
 var rightOffLimits = [];
 for(r=17; r<=397; r+=20) {
 	rightOffLimits.push(r);
 	rightOffLimits.push(r+1);
 	rightOffLimits.push(r+2);
 }
+
+for(i=0; i<=a.length; i++) { 
+	for(j=0; j<=rightOffLimits; j++) {
+		if(i === rightOffLimits[j]) {
+			isRightOff = true;
+		}
+	}
+	// Right and Left
+	if(a[i]*a[i+1]*a[i+1]*a[i+3] > highestProduct && isRightOff === false) {
+		highestProduct = a[i]*a[i+1]*a[i+2]*a[i+3];
+		highestNumbers = [a[i],a[i+1],a[i+2],a[i+3]];
+	}
+	isRightOff = false;
+
+}
+
+console.log("The highest product of four adjecent numbers going to the right is "+ highestProduct +" and the four numbers are "+ highestNumbers);
