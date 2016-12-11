@@ -1,6 +1,6 @@
 /* Solution for Euler Problem 11: https://projecteuler.net/problem=11
 ****NOTE THIS IS ONLY USING A 1 DIMENSIONAL ARRAY*****
-I will do a two dimensional array next, which should be much easier.
+****I will do a two dimensional array next, which should be much easier.****
 */
 
 var a =	[8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8,
@@ -30,7 +30,6 @@ var isdRightOff = false;
 var isUpOff = false;
 var isdleftOff = false;
 
-
 var highestProduct = 0;
 var highestNumbers = [];
 var highestPos;
@@ -41,21 +40,18 @@ var drightOffLimits = [];
 var updOffLimits = [];
 var dleftOffLimits = [];
 
-// Off-limit positions for right and left and down-right diagnonal.
-for(r=17; r<=397; r+=20) {
-	rightOffLimits.push(r, r+1, r+2);
-	drightOffLimits.push(r, r+1, r+2);
-}
-for(g=336; g<=399; g++) {
-	drightOffLimits.push(g);
+// Off-limit positions for right to left and down-right diagnonal.
+for(i=17; i<=397; i+=20) {
+	rightOffLimits.push(i, i+1, i+2);
+	drightOffLimits.push(i, i+1, i+2);
 }
 // Off-limit positions for up and down.
-for(u=340; u<=399; u++) {
-	updOffLimits.push(u);
+for(i=340; i<=399; i++) {
+	updOffLimits.push(i);
 }
 // Off-limit positions for down-left diagonal.
-for(n=0; n<=380; n+=20) {
-	dleftOffLimits.push(n, n+1, n+2);
+for(i=0; i<=380; i+=20) {
+	dleftOffLimits.push(i, i+1, i+2);
 }
 
 
@@ -95,7 +91,7 @@ for(i=0; i<=a.length; i++) {
 		startPos = i;
 	}
 	// Diagonal (down right)
-	if(a[i]*a[i+21]*a[i+42]*a[i+63] > highestProduct && !isdRightOff) {
+	if(a[i]*a[i+21]*a[i+42]*a[i+63] > highestProduct && !isdRightOff && i < 336) {
 		highestProduct = a[i]*a[i+21]*a[i+42]*a[i+63];
 		highestNumbers = [a[i],a[i+21],a[i+42],a[i+63]];
 		highestPos = "diagonally(down right)";
