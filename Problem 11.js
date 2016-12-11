@@ -29,17 +29,22 @@ var a =	[8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8,
 	20,73,35,29,78,31,90,1,74,31,49,71,48,86,81,16,23,57,5,54,
 	01,70,54,71,83,51,54,69,16,92,33,48,61,43,52,1,89,19,67,48];
 
+var highestPos;
 var isRightOff = false;
+var isdRightOff = false;
 var highestProduct = 0;
 var highestNumbers = [];
 	
 // Push the positions that are off limits to an array instead of having to write all 60 values by hand.
-// Right and Left
+// Right and Left + down right diag
 var rightOffLimits = [];
+var drightOffLimits = [];
+for(g=336; g<=399; g++) {
+	drightOffLimits.push[g];
+}
 for(r=17; r<=397; r+=20) {
-	rightOffLimits.push(r);
-	rightOffLimits.push(r+1);
-	rightOffLimits.push(r+2);
+	rightOffLimits.push(r, r+1, r+2);
+	drightOffLimits.push(r, r+1, r+2);
 }
 
 for(i=0; i<=a.length; i++) { 
@@ -47,14 +52,25 @@ for(i=0; i<=a.length; i++) {
 		if(i === rightOffLimits[j]) {
 			isRightOff = true;
 		}
+		if(i === drightOffLimits[j]) {
+			isdRightOff = true;
+		}
 	}
 	// Right and Left
 	if(a[i]*a[i+1]*a[i+1]*a[i+3] > highestProduct && isRightOff === false) {
 		highestProduct = a[i]*a[i+1]*a[i+2]*a[i+3];
 		highestNumbers = [a[i],a[i+1],a[i+2],a[i+3]];
+		highestPos = "right and left";
+	}
+	// Diagonal (down right)
+	if(a[i]*a[i+21]*a[i+22]*a[i+23] > highestProduct && isdRightOff === false) {
+		highestProduct = a[i]*a[i+21]*a[i+22]*a[i+23];
+		highestNumbers = [a[i],a[i+21],a[i+22],a[i+23]];
+		highestPos = "diagonally(down right)";
 	}
 	isRightOff = false;
+	isdRightOff = false;
 
 }
 
-console.log("The highest product of four adjecent numbers going to the right is "+ highestProduct +" and the four numbers are "+ highestNumbers);
+console.log("The highest product of four adjecent numbers are positioned "+highestPos+" and their total product is "+ highestProduct +", and the four numbers are "+ highestNumbers);
