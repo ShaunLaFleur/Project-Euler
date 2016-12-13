@@ -1,48 +1,37 @@
-/*
-A. Find all abundant numbers and push them into an array called abundant.
-	**** Use this: https://en.wikipedia.org/wiki/Abundant_number or other sources to find an algorithm or "trick" to calculate if a number is an abundant number so we don't need to brute force.
-	**** The way we are doing it now requires two calculations. First we calculate all proper divisors of n, then we calculate if those divisors sum up to more than n. There is likely a better method 
-	**** using an algorithm.
-	1. Start a for loop starting at i=12(smallest abundant number) and stopping before 28123. Put another for loop inside starting at j=0 and looping while j<i. 
-	2. First loop is the number we are checking for divisors. Second loop checks if j can be divided into i without left overs. If it can, add it to a variable. If at the end the variable is higher than 
-	i, i is an abundant number.
-B. Create three nested for loops. First loop will use i(positive number to be checked), second will use j(number from abundant list) and third will use t(second number from abundant list)
-
-
-NEW METHOD: Create a two dimensional array. First row holds every number from 1 to 28123 and beneath each number we hold it's proper divisors.
-We can skip a ton of calculations by starting from 1, adding it as a proper divisor to each of it's 
-multiples(because all of it's multiples are properly divisible by 1). Then going to 2 and doing the same and so on and so forth. Once we have this 
-array/table built we can loop for each position and add up all of the values beneath it together to check if they sum to the position on the top row.
-
-
-for(i=1; i<28123; i++) {
-	for(j=i*2; j<28123; j=+i)
-	{push here}
-}
-
-
-
-*/
-
+// This part works effeciently. Non-brute force method of finding abundant numbers.
+var dataTable = [1];
 var abundant = [];
-var totalSum = 0;
 var divSum = 0;
 var isMatch = false;
-var sum = 0;
+var sum;
 
-// Find abundant numbers below.
-// This part works.
-for(i=12; i<=28123; i++) {
-	for(j=0; j<i; j++) {
-		if(i % j === 0) {
-			divSum += j;
+
+for(i=1; i<=28123; i++) {
+	// Push i to all it's multiples. We use dataTable[i-1] because array positions start at 0, so each number will be in a position that is one less than it's value. 1 will be on array position 0.
+	for(j=i*2; j<=28123; j+=i) {
+		// First pass through creates a new row for every number from 2 to 28123.
+		if(i === 1) {
+			dataTable.push([j]);
 		}
+		dataTable[j-1].push(i);
 	}
+	// Sum up all proper divisors of i(if it is equal or higher than 12) starting at column 1 row i-1.
+	for(c=1; c<dataTable[i-1].length; c++) {
+		divSum += dataTable[i-1][c];
+	}	
+	// If i's proper divisors' sum(divSum) is higher than i, add i to the abundant array.
 	if(divSum > i) {
 		abundant.push(i);
 	}
 	divSum = 0;
 }
+console.log(abundant);
+
+
+
+
+
+
 
 // After finding all abundant numbers, this will check if i is a result of adding two of these abundant numbers
 // together. If it is not, it will be added to the sum. For some reason this method crashes if the limit for i is
