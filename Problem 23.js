@@ -1,9 +1,9 @@
-// This part works effeciently. Non-brute force method of finding abundant numbers.
 var dataTable = [1];
 var abundant = [];
 var divSum = 0;
 var isMatch = false;
-var sum;
+var sum = 0;
+var abSum = [];
 
 
 for(i=1; i<=28123; i++) {
@@ -25,28 +25,30 @@ for(i=1; i<=28123; i++) {
 	}
 	divSum = 0;
 }
-console.log(abundant);
 
 
+// Set every number below 28123 that is a sum of two abundant numbers to the abSum array position equal it's value as "true". This doesn't have to
+// be set to "true", it can be anything since in the next section we will only check if the position is defined. If it's respective 
+// position(ie: for 24 it's position 24 in abSum) is defined, it is the sum of two abudant numbers, otherwise it is undefined.
+for(i=0; i<abundant.length; i++) {
+  for(j=i; j<=abundant.length; j++) {
+  	// If i + j are over the limit, we know that every further value of j, when added to i, will be higher than 28123, so we break out of the inner
+  	// loop.
+    if(abundant[i]+abundant[j] <= 28123) {
+      abSum[abundant[i]+abundant[j]] = true;
+    } else {
+      break;
+    }
+  }
+}
 
-
-
-
-
-// After finding all abundant numbers, this will check if i is a result of adding two of these abundant numbers
-// together. If it is not, it will be added to the sum. For some reason this method crashes if the limit for i is
-// too high but works otherwise(not sure if calculations are accurate yet).
-for(i=0; i<=28123; i++){
-	for(j=0; abundant[j]<i; j++) {
-		for(t=0; abundant[t]<i; t++) {
-			if(!isMatch && abundant[j]+abundant[t] === i) {
-				isMatch = true;
-			}
-		}
-	}
-	if(!isMatch) {
+// Check if each number from 1 to 28123 is found in the abSum array. if(!abSum[i]) is essentially asking if position [i] of the abSum
+// array returns as undefined/false, if it does then it will add the current value to the total sum.
+for(i=0; i<=28123; i++) {
+	if(!abSum[i]) {
 		sum += i;
 	}
-	isMatch = false;
 }
-console.log(sum);
+console.log("The total sum of all positive integers that are not the sum of two abundant numbers is: "+sum);
+console.log("\nHere is a data table for all numbers up to 28123 and their proper divisors.");
+console.log(dataTable);
