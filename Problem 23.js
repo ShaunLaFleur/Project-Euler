@@ -7,7 +7,7 @@ var abSum = [];
 
 
 for(i=1; i<=28123; i++) {
-	// Push i to all it's multiples. We use dataTable[i-1] because array positions start at 0, so each number will be in a position that is one less than it's value. 1 will be on array position 0.
+	// Push i to all its multiples. We use dataTable[j-1] because array positions start at 0, so each number will be in a position that is one less than its value. 1 will be on array position 0.
 	for(j=i*2; j<=28123; j+=i) {
 		// First pass through creates a new row for every number from 2 to 28123.
 		if(i === 1) {
@@ -15,7 +15,7 @@ for(i=1; i<=28123; i++) {
 		}
 		dataTable[j-1].push(i);
 	}
-	// Sum up all proper divisors of i(if it is equal or higher than 12) starting at column 1 row i-1.
+	// Sum up all proper divisors of i starting at column 1 row i-1.
 	for(c=1; c<dataTable[i-1].length; c++) {
 		divSum += dataTable[i-1][c];
 	}	
@@ -27,9 +27,9 @@ for(i=1; i<=28123; i++) {
 }
 
 
-// Set every number below 28123 that is a sum of two abundant numbers to the abSum array position equal it's value as "true". This doesn't have to
-// be set to "true", it can be anything since in the next section we will only check if the position is defined. If it's respective 
-// position(ie: for 24 it's position 24 in abSum) is defined, it is the sum of two abudant numbers, otherwise it is undefined.
+// Set every number below 28123 that is a sum of two abundant numbers to the abSum array position equal its value as "true". This doesn't have to
+// be set to "true", it can be anything since in the next section we will only check if the position is defined. If its respective 
+// position(ie: for 24 its position 24 in abSum) is defined, it is the sum of two abudant numbers, otherwise it is undefined.
 for(i=0; i<abundant.length; i++) {
   for(j=i; j<=abundant.length; j++) {
   	// If i + j are over the limit, we know that every further value of j, when added to i, will be higher than 28123, so we break out of the inner
