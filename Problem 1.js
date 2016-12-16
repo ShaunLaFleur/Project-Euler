@@ -1,4 +1,4 @@
-// Answer to this question: https://projecteuler.net/problem=1
+// Solution to this problem: https://projecteuler.net/problem=1
 confirm("This script will find all of the multiples of two numbers chosen by the user that exist below another number chosen by the user.")
 var num1 = prompt("Enter the first number that you want to find the multiples of.");
 var num2 = prompt("Enter the second number that you want to find the multiples of.");

@@ -1,4 +1,4 @@
-// Customized answer to this problem: https://projecteuler.net/problem=2 
+// Customized solution to this problem: https://projecteuler.net/problem=2 
 confirm("This script will find the Fibonacci sequence starting with two numbers chosen by the user, whose values are less than a given limit chosen by the user.");
 var a = prompt("Please input the first number to start the sequence with.");
 var b = prompt("Please input the second number to start the sequence with.");

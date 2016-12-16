@@ -1,3 +1,4 @@
+// Solution to this problem: https://projecteuler.net/problem=23
 var dataTable = [1];
 var abundant = [];
 var divSum = 0;
@@ -49,6 +50,6 @@ for(i=0; i<=28123; i++) {
 		sum += i;
 	}
 }
-console.log("The total sum of all positive integers that are not the sum of two abundant numbers is: "+sum);
+console.log("The total sum of all positive integers below 28123 that are not the sum of two abundant numbers is: "+sum);
 console.log("\nHere is a data table for all numbers up to 28123 and their proper divisors.");
 console.log(dataTable);
