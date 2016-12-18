@@ -13,7 +13,7 @@ for(i=2; i<=n; i++) {
 for(i=2; i<=limit; i++) {
 	// Check that i currently isn't false(striked out) before we set it's multiples to false.
 	if(primeList[i]) {
-		for(j=i*i; j<n; j+=i) {
+		for(j=i+i; j<n; j+=i) {
 			primeList[j] = false;
 		}
 	}
