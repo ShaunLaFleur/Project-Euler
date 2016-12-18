@@ -1,4 +1,4 @@
-// Solution to this problem(Using the sieve of Eratosthenes approach) https://projecteuler.net/problem=7
+// Solution to this problem(Using the sieve of Eratosthenes approach for optimization) https://projecteuler.net/problem=7
 var n = 105000; // Number assumed to be higher than the number we're searching for.
 var primeList = [false, false]; // 0 and 1 are false because we know they aren't primes.
 var limit = Math.sqrt(n);
