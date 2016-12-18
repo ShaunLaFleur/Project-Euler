@@ -3,6 +3,7 @@ var n = 105000; // Number assumed to be higher than the number we're searching f
 var primeList = [false, false]; // 0 and 1 are false because we know they aren't primes.
 var limit = Math.sqrt(n);
 var counter = 0;
+var ourNum;
 
 // Populate the primeList positions 2 to n to true.
 for(i=2; i<=n; i++) {
