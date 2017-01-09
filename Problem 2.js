@@ -1,5 +1,5 @@
 // Customized solution to this problem: https://projecteuler.net/problem=2 
-confirm("This script will find the Fibonacci sequence starting with two numbers chosen by the user, whose values are less than a given limit chosen by the user.");
+confirm("This script will find the Fibonacci sequence starting with two numbers chosen by the user, whose values are less than a given limit also chosen by the user.");
 var a = prompt("Please input the first number to start the sequence with.");
 var b = prompt("Please input the second number to start the sequence with.");
 var fibHolder = [parseInt(a),parseInt(b)];
@@ -16,7 +16,6 @@ while(sumTotal < limit) {
   sumTotal = fibHolder[i]+fibHolder[i-1];
   i++;
 }
-
 console.log("These are the values in the Fibonacci sequence starting with "+ a +" and "+ b + " whose values are less than "+ limit +": "+ fibHolder);
 console.log("The sum of only the even numbers within this sequence is: "+ sumOfEven);
 

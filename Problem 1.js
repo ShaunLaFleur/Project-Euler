@@ -1,8 +1,8 @@
 // Solution to this problem: https://projecteuler.net/problem=1
-confirm("This script will find all of the multiples of two numbers chosen by the user that exist below another number chosen by the user.")
+confirm("This script will find all of the multiples of two numbers that exist below a given number.")
 var num1 = prompt("Enter the first number that you want to find the multiples of.");
 var num2 = prompt("Enter the second number that you want to find the multiples of.");
-var limit = prompt("You want to find all of the multiples BELOW what number? Note: The script will stop checking for multiples BEFORE this number.");
+var limit = prompt("You want to find all of the multiples BELOW what number?");
 var multiples = [];
 var multSum = 0;
 

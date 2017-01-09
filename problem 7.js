@@ -10,7 +10,7 @@ for(i=2; i<=n; i++) {
 	primeList[i] = true;
 }
 
-// Start changing all multiples of 2, 3, 5, ... up to square root of n to false for their respective positions(so number 4 would have position 4 set to false).
+// Start changing all multiples of 2, 3, 5, ... up to the square root of n to false for their respective positions(so number 4 would have position 4 set to false).
 for(i=2; i<=limit; i++) {
 	// Check that i currently isn't false(striked out) before we set it's multiples to false.
 	if(primeList[i]) {
@@ -26,6 +26,7 @@ for(i=2; i<n; i++) {
 		counter++
 		if(counter === 10001) {
 		  ourNum = i;
+		  break;
 		}
 	}
 }

@@ -10,7 +10,7 @@ for(i=2; i<1000000; i++) {
 		counter++;
 		if(j % 2 === 0) {
 			j = j/2;
-		} else if(j % 2 !== 0) {
+		} else {
 			j = (3*j)+1;
 		}
 		if(j === 1 && counter > highestCount) {

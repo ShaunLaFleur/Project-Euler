@@ -1,7 +1,4 @@
-/* Solution for Euler Problem 11: https://projecteuler.net/problem=11
-****NOTE THIS IS ONLY USING A 1 DIMENSIONAL ARRAY*****
-****I will do a two dimensional array next, which should be much easier.****
-*/
+/* Solution for Euler Problem 11: https://projecteuler.net/problem=11 */
 
 var a =	[8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8,
 	49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,4,56,62,0,
@@ -25,89 +22,45 @@ var a =	[8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8,
 	01,70,54,71,83,51,54,69,16,92,33,48,61,43,52,1,89,19,67,48];
 
 
-var isRightOff = false;
-var isdRightOff = false;
-var isUpOff = false;
-var isdleftOff = false;
-
 var highestProduct = 0;
 var highestNumbers = [];
 var highestPos;
 var startPos = 0;
 
-var rightOffLimits = [];
-var drightOffLimits = [];
-var updOffLimits = [];
-var dleftOffLimits = [];
-
-// Off-limit positions for right to left and down-right diagnonal.
-for(i=17; i<=397; i+=20) {
-	rightOffLimits.push(i, i+1, i+2);
-	drightOffLimits.push(i, i+1, i+2);
-}
-// Off-limit positions for up and down.
-for(i=340; i<=399; i++) {
-	updOffLimits.push(i);
-}
-// Off-limit positions for down-left diagonal.
-for(i=0; i<=380; i+=20) {
-	dleftOffLimits.push(i, i+1, i+2);
-}
-
-
 // The main loop which goes through each position.
 for(i=0; i<=a.length; i++) { 
-	// Off-limit check
-	for(j=0; j<=rightOffLimits; j++) {
-		// Right-Left Check
-		if(i === rightOffLimits[j]) {
-			isRightOff = true;
-		}
-		// Down-right diagonal check
-		if(i === drightOffLimits[j]) {
-			isdRightOff = true;
-		}
-		// Down-left diagonal check
-		if(i === dleftOffLimits[j]) {
-			isdleftOff = true;
-		}
-		// Up-down check
-		if(i === updOffLimits[j]) {
-			isUpOff = true;
-		}
-	}
 	// Up and Down
-	if(a[i]*a[i+20]*a[i+40]*a[i+60] > highestProduct && !isUpOff) {
+	var tempProd = a[i]*a[i+20]*a[i+40]*a[i+60];
+	if( tempProd > highestProduct && i < 361) {
 		highestProduct = a[i]*a[i+20]*a[i+40]*a[i+60];
 		highestNumbers = [a[i],a[i+20],a[i+40],a[i+60]];
 		highestPos = "up and down";
 		startPos = i;
 	}
 	// Right and Left
-	if(a[i]*a[i+1]*a[i+2]*a[i+3] > highestProduct && !isRightOff) {
+	var tempProd = a[i]*a[i+1]*a[i+2]*a[i+3];
+	if(tempProd > highestProduct && i % 20 !== 18 && i % 20 !== 19 && i%20 !== 0) {
 		highestProduct = a[i]*a[i+1]*a[i+2]*a[i+3];
 		highestNumbers = [a[i],a[i+1],a[i+2],a[i+3]];
 		highestPos = "right and left";
 		startPos = i;
 	}
 	// Diagonal (down right)
-	if(a[i]*a[i+21]*a[i+42]*a[i+63] > highestProduct && !isdRightOff && i < 336) {
+	var tempProd = a[i]*a[i+21]*a[i+42]*a[i+63];
+	if(tempProd > highestProduct && i % 20 !== 18 && i % 20 !== 19 && i%20 !== 0) {
 		highestProduct = a[i]*a[i+21]*a[i+42]*a[i+63];
 		highestNumbers = [a[i],a[i+21],a[i+42],a[i+63]];
 		highestPos = "diagonally(down right)";
 		startPos = i;
 	}
 	// Diagonal (down left)
-	if(a[i]*a[i+19]*a[i+38]*a[i+57] > highestProduct && !isdleftOff) {
+	var tempProd = a[i]*a[i+19]*a[i+38]*a[i+57];
+	if(tempProd > highestProduct && i % 20 !== 1 && i % 20 !== 2 && i%20 !== 3) {
 		highestProduct = a[i]*a[i+19]*a[i+38]*a[i+57];
 		highestNumbers = [a[i],a[i+19],a[i+38],a[i+57]];
 		highestPos = "diagonally(down left)";
 		startPos = i;
 	}
-	isRightOff = false;
-	isdRightOff = false;
-	isUpOff = false;
-	isdleftOff = false;
 
 }
 console.log("The highest product of four adjecent numbers is "+highestProduct+". The four numbers are: "+highestNumbers+" and can be found starting at array position "+startPos+" going "+highestPos+".");
