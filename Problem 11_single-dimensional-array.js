@@ -39,7 +39,7 @@ for(i=0; i<=a.length; i++) {
 	}
 	// Right and Left
 	var tempProd = a[i]*a[i+1]*a[i+2]*a[i+3];
-	if(tempProd > highestProduct && i % 20 !== 18 && i % 20 !== 19 && i%20 !== 0) {
+	if(tempProd > highestProduct && i % 20 !== 17 && i % 20 !== 18 && i%20 !== 19) {
 		highestProduct = a[i]*a[i+1]*a[i+2]*a[i+3];
 		highestNumbers = [a[i],a[i+1],a[i+2],a[i+3]];
 		highestPos = "right and left";
@@ -47,7 +47,7 @@ for(i=0; i<=a.length; i++) {
 	}
 	// Diagonal (down right)
 	var tempProd = a[i]*a[i+21]*a[i+42]*a[i+63];
-	if(tempProd > highestProduct && i % 20 !== 18 && i % 20 !== 19 && i%20 !== 0) {
+	if(tempProd > highestProduct && i % 20 !== 17 && i % 20 !== 18 && i%20 !== 19) {
 		highestProduct = a[i]*a[i+21]*a[i+42]*a[i+63];
 		highestNumbers = [a[i],a[i+21],a[i+42],a[i+63]];
 		highestPos = "diagonally(down right)";
@@ -55,7 +55,7 @@ for(i=0; i<=a.length; i++) {
 	}
 	// Diagonal (down left)
 	var tempProd = a[i]*a[i+19]*a[i+38]*a[i+57];
-	if(tempProd > highestProduct && i % 20 !== 1 && i % 20 !== 2 && i%20 !== 3) {
+	if(tempProd > highestProduct && i % 20 !== 0 && i % 20 !== 1 && i%20 !== 2) {
 		highestProduct = a[i]*a[i+19]*a[i+38]*a[i+57];
 		highestNumbers = [a[i],a[i+19],a[i+38],a[i+57]];
 		highestPos = "diagonally(down left)";
