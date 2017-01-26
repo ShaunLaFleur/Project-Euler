@@ -18,9 +18,7 @@ We are looking for the highest prime divisor of 600851475143.
 var num = 600851475143;
 var n;
 var highestPrime = 0;
-var iIsPrime, 
-    nIsPrime,
-    isFound = false;
+var isFound = false;
 
 for(i=2; i<Math.sqrt(num); i++) {
   // If  previous n was found to be a prime divisor of num, it is the number we want, considering the first n to properly divide and be a prime number will also be the largest prime divisor, so we break out of the loop.

@@ -1,23 +1,30 @@
+num = 600851475143
 highestPrime = 0
-our_number = 600851475143
+isFound = false
 
-# Begin looking for a proper divisor
-2.upto(our_number-1) do |i|
-  if highestPrime != 0
-    break
-  end
-  if our_number % i == 0
-    # Once the divisor is found we save it to a variable and then test if it is a prime number.
-    n = our_number/i
-    # Start attempting to divide by every number starting from 2. If any number between 1 and itself divides evenly, it is not a prime number and thus not the number we're looking for.
-    2.upto(n-1) do |j|
-      if n % j == 0
-        break
-      end
-      if j == n-1
-        highestPrime = n
-      end
-    end
-  end
+2.upto(Math.sqrt(num)) do |i|
+	# Find proper divisor
+	if num % i == 0 
+		# If i is a proper divisor, check the result of num/i first.
+		n = num/i
+		2.upto(n-1) do |j|
+			if n % j == 0
+				break
+			elsif j == n-1
+				highestPrime = n
+				isFound = true
+			end
+		end
+		# If n is not a prime divisor of num, then we can check if i(since previously we determined it was a proper divisor) is a prime divisor.
+		if isFound == false
+			2.upto(i-1) do |j|
+				if i % j == 0
+					break
+				elsif j == i-1
+					highestPrime = i
+				end
+			end
+		end
+	end 
 end
 puts highestPrime
